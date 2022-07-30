@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Tripro</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css">
+  <style type="text/css">
+    .d-flex {
+      display: flex;
+    }
+
+    .ml-30 {
+      margin-left: 30px;
+    }
+    /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+  </style>
+
+  <script type="text/javascript">
+    window.alert = function () { };
+    var defaultCSS = document.getElementById('bootstrap-css');
+    function changeCSS(css) {
+      if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
+      else $('head > link').filter(':first').replaceWith(defaultCSS);
+    }
+    // $('document').ready(function () {
+    //   var iframe_height = parseInt($('html').height());
+    //   window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+    // });
+  </script>
+</head>
+
+<body>
+  <div class="panel panel-default form-inline">
+     <div class="panel-heading text-center">Logo</div>
+    <div class="panel-body">
+      <div class="container">
+         
+      <div class="row">
+
+        <div class="form-group">
+            <input type="date" name="created_day" class="form-control" id="email" value="">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="" placeholder="Client Name">
+        </div>
+        <div class="form-group">
+           <select class="form-control" name="type">
+             <option selected="disable">Type</option>
+             <option value="FLIGHTS">FLIGHTS</option>
+             <option value="PACKAGE">PACKAGE</option>
+             <option value="SPORT PACKEGE">SPORT PACKEGE</option>
+             <option value="HOTEL">HOTEL</option>
+             <option value="SERVICE">SERVICE</option>
+             <option value="TICKETS">TICKETS</option>
+           </select>
+        </div>
+
+        <div class="form-group">
+           <input type="text" class="form-control" placeholder="First Day" name="first_day" id="first_day">             
+        </div>
+
+        <div class="form-group">
+           <select class="form-control" name="lead_source" id="lead_source">
+             <option selected="disable">Leed Source</option>
+             <option value="Facebook">Facebook</option>
+             <option value="Instagram">Instagram</option>
+             <option value="Private">Private</option>             
+             <option value="Google">Google</option>             
+
+           </select>
+        </div>     
+
+         <div class="form-group">
+           <select class="form-control" name="country" id="country">
+             <option selected="disable">Country</option>
+             <option value="Egypt">Egypt</option>
+             <option value="Croatia">Croatia</option>
+             <option value="Austria">Austria</option>             
+             <option value="Serbia">Serbia</option>             
+             <option value="Israel">Israel</option>             
+             <option value="Bulgaria">Bulgaria</option>             
+
+           </select>
+        </div>   
+
+         <div class="form-group">
+           <select class="form-control" name="no_of_guests" id="no_of_guests">
+             <option selected="disable">No of Guests</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+             <option value="7">7</option>
+             <option value="8">8</option>
+             <option value="9">9</option>
+             <option value="10">10</option>        
+           </select>
+        </div>  
+
+         <div class="form-group "style="margin-top: 2%;">
+           <input type="text" class="form-control" placeholder="Last Day" name="last_day" id="last_day">             
+        </div>      
+
+           
+         </div>
+
+      </div>
+
+    </div>
+
+<div class="tab">
+  <center>
+  <img class="tablinks" onclick="openCity(event, 'Plane')" src="{{url('assets/plane.png')}}">
+  <img class="tablinks" onclick="openCity(event, 'Ticket')" src="{{url('assets/ticket.png')}}">
+  <img class="tablinks" onclick="openCity(event, 'Menu')" src="{{url('assets/menu.png')}}">
+  <img class="tablinks" onclick="openCity(event, 'Hotel')" src="{{url('assets/hotel.png')}}">
+  <img class="tablinks" onclick="openCity(event, 'Plane')" src="{{url('assets/plane.png')}}">
+
+  <img class="tablinks text-center" onclick="openCity(event, 'Dollar')" src="{{url('assets/dollar.png')}}">
+</center>
+</div>
+
+<div id="Plane" class="tabcontent text-center">
+  <h3><b>One Way</b></h3>
+
+  <div class="form-inline" id="extra-items">       
+         <div class="form-group">
+           <input type="text" class="form-control" name="from" id="from" placeholder="From">
+         </div>
+        <div class="form-group">
+           <input type="text" class="form-control" name="to" id="to" placeholder="To">
+        </div>  
+        <div class="form-group">
+            <select class="form-control" name="supplier" id="supplier">
+            <option selected="disable">Supplier</option>
+            <option value="CHARTER">CHARTER</option>
+            <option value="TURKISH">TURKISH</option>
+            <option value="PEGASUS">PEGASUS</option>             
+            <option value="FLY DUBAI">FLY DUBAI</option>             
+            <option value="EL AL">EL AL</option>             
+            <option value="ARKIA">ARKIA</option>             
+            <option value="ISRAIR">ISRAIR</option>        
+            </select>
+        </div> 
+        <div class="form-group">
+           <input type="text"  class="form-control" name="cost" id="cost" placeholder="Cost">    
+        </div> 
+        <div class="form-group">
+           <select class="form-control" name="trolly" id="trolly">
+             <option selected="disable">Trolly</option>
+             <option value="1">1</option>
+             <option value="2">2</option>         
+           </select>
+        </div>
+        <div class="form-group">
+           <select class="form-control" name="beggege" id="beggege">
+             <option selected="disable">BEGGEGE</option>
+             <option value="1">1</option>
+             <option value="2">2</option>         
+           </select>
+        </div>
+         <div class="input-group-btn">
+                <button class="btn btn-success" type="button" onclick="education_fields();"> <span
+                    class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+        </div>  
+  </div>
+
+</div>
+
+<div id="Ticket" class="tabcontent text-center">
+  <h3><b>Ticket</b></h3>
+   <div class="form-inline" id="tickets_items">       
+         <div class="form-group">
+           <input type="text" class="form-control" name="game" id="game" placeholder="Game">
+         </div>
+        <div class="form-group">
+           <input type="text" class="form-control" name="Category" id="Category" placeholder="Category">
+        </div>  
+        <div class="form-group">
+            <select class="form-control" name="seats" id="seats">
+            <option selected="disable">Seats</option>
+            <option value="Single">Single</option>
+            <option value="Pair">Pair</option>
+            <option value="Triple">Triple</option>             
+            <option value="QUARTET">QUARTET</option>             
+            <option value="1+1">1+1</option>             
+            <option value="2+1">2+1</option>             
+            <option value="2+2">2+2</option>        
+            </select>
+        </div> 
+        <div class="form-group">
+           <input type="text"  class="form-control" name="cost" id="cost" placeholder="Cost">    
+        </div> 
+         
+        <div class="input-group-btn">
+        <button class="btn btn-success" type="button" onclick="tickets_fields();"> <span
+        class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+        </div>  
+  </div>
+</div>
+
+<div id="Menu" class="tabcontent">
+  <h3>Menu</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<div id="Hotel" class="tabcontent">
+  <h3>Hotel</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<div id="Dollar" class="tabcontent">
+  <h3>Payment</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+
+
+<div class="container">
+    <h2 class=""> SERVICES</h2>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ONE WAY</th>
+      <th scope="col">2500</th>
+      <th scope="col">book aflight</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">ONE WAY</th>
+      <td>2500</td>
+      <td>wizz air</td>
+     </tr>
+    <tr>
+      <th scope="row">HOTEL</th>
+      <td>2500</td>
+      <td>2500</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">PAYMENT</th>
+      <td>2500</td>
+      <td>credit card</td>
+    </tr>
+    
+     
+    
+  </tbody>
+</table>
+
+   <h2>Balance</h2><span>4500ils</span>
+   <h2>COMMESION</h2><span>4500ils</span>
+  
+</div>
+
+   <center> <a><button class="btn btn-success float-lg-right submit" data-type='invoice'>Submit</button></a></center>
+
+
+
+     
+
+ <!--   
+  <center>
+    <a><button class="btn btn-primary float-lg-right submit" data-type='bill'>Generate Bill</button></a>
+    <a><button class="btn btn-success float-lg-right submit" data-type='invoice'>Generate Invoice</button></a>
+    <a><button class="btn btn-warning float-lg-right submit" data-type='qoutation'>Generate Quatation</button></a>
+
+  </center> -->
+
+
+   
+
+</body>
+
+</html>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+
+
+  function calculate() {
+
+    let sum = 0;
+    $('.item_row').each(function (item, index) {
+
+      let row_price = $(index).find('.item_price').val() ?? 0;
+      let row_quantity = $(index).find('.item_quantity').val() ?? 0;
+      sum += row_price * row_quantity;
+    });
+    document.getElementById('total_item').innerHTML = sum;
+
+    var totalEducationPercentage = (17 / 100) * sum;
+    document.getElementById('total_education_percentage').innerHTML = totalEducationPercentage;
+  }
+
+  function calculateService() {
+
+    let sum = 0;
+    $('.item_service_row').each(function (item, index) {
+
+      let row_price = $(index).find('.service_price').val() ?? 0;
+      let row_quantity = $(index).find('.service_quantity').val() ?? 0;
+      sum += row_price * row_quantity;
+    });
+    document.getElementById('total_service').innerHTML = sum;
+
+    var totalServicePercentage = (16 / 100) * sum;
+    document.getElementById('total_service_percentage').innerHTML = totalServicePercentage;
+
+  }
+
+
+  $('.service_quantity').change(function () {
+    // console.log('ss');
+    var price = document.getElementById("service_price").value;
+    var quantity = document.getElementById("service_quantity").value;
+    var total = price * quantity;
+    document.getElementById('total_service').innerHTML = total;
+
+
+  });
+
+
+
+  $('.submit').click(function () {
+
+    var type = $(this).data('type');
+    var base_url = 'http://127.0.0.1:8000';
+    var route = base_url + '/admin/process';
+    let items = [];
+    $('.item_row').each(function (item, index) {
+      let row_name = $(index).find('.item_name').val() ?? "";
+      let row_price = $(index).find('.item_price').val() ?? 0;
+      let row_quantity = $(index).find('.item_quantity').val() ?? 0;
+      if (row_name != '' && row_price != 0 && row_quantity != 0)
+        items.push({'item_name': row_name, 'item_price': row_price, 'item_quantity': row_quantity});
+    });
+    let services = [];
+    $('.item_service_row').each(function (item, index) {
+      let row_name = $(index).find('.service_name').val() ?? "";
+      let row_price = $(index).find('.service_price').val() ?? 0;
+      let row_quantity = $(index).find('.service_quantity').val() ?? 0;
+      if (row_name != '' && row_price != 0 && row_quantity != 0)
+        services.push({'service_name': row_name, 'service_price': row_price, 'service_quantity': row_quantity});
+    });
+
+ 
+
+    let customer = $("input[name*='customer']").val();
+    let date = $("input[name*='date']").val();
+    let bill_no = $("input[name*='bill_no']").val();
+
+
+//    console.log(JSON.stringify(items))
+
+
+
+    $.ajax({
+      url: route,
+      type: 'post',
+     headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+      data: {
+
+        items: JSON.stringify(items),
+        services: JSON.stringify(services),        
+        customer: customer,
+        bill_no: bill_no,
+        date: date,
+        type: type,
+
+      },
+      success: function (response) {
+        console.log(response)
+        window.location.href = response.redirect;
+
+
+      },
+      error: function (xhr) {
+        console.log(xhr)
+      }
+    });
+  });
+
+
+  var room = 1;
+  function education_fields() {
+
+    room++;
+    var objTo = document.getElementById('extra-items')
+    var divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group removeclass" + room);
+
+    divtest.innerHTML = '<div class="form-group"><input type="text" class="form-control" name="from" id="from" placeholder="From"></div><div class="form-group"><input type="text" class="form-control" name="to" id="to" placeholder="To"></div><div class="form-group"><select class="form-control" name="supplier" id="supplier"><option selected="disable">Supplier</option><option value="CHARTER">CHARTER</option><option value="TURKISH">TURKISH</option><option value="PEGASUS">PEGASUS</option><option value="FLY DUBAI">FLY DUBAI</option>             <option value="EL AL">EL AL</option><option value="ARKIA">ARKIA</option>           <option value="ISRAIR">ISRAIR</option>        </select></div><div class="form-group"><input type="text"  class="form-control" name="cost" id="cost" placeholder="Cost">    </div><div class="form-group"><select class="form-control" name="trolly" id="trolly"><option selected="disable">Trolly</option><option value="1">1</option><option value="2">2</option></select></div><div class="form-group"><select class="form-control" name="beggege" id="beggege"><option selected="disable">BEGGEGE</option><option value="1">1</option><option value="2">2</option>         </select></div><div class="clear"></div>';
+    objTo.appendChild(divtest)
+  }
+
+
+   function tickets_fields() {
+
+    room++;
+    var objTo = document.getElementById('tickets_items')
+    var divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group removeclass" + room);
+
+    divtest.innerHTML = '<div class="form-group"><input type="text" class="form-control" name="game" id="game" placeholder="Game"></div><div class="form-group"><input type="text" class="form-control" name="Category" id="Category" placeholder="Category"></div><div class="form-group"><select class="form-control" name="seats" id="seats"><option selected="disable">Seats</option><option value="Single">Single</option><option value="Pair">Pair</option><option value="Triple">Triple</option><option value="QUARTET">QUARTET</option> <option value="1+1">1+1</option><option value="2+1">2+1</option>  <option value="2+2">2+2</option>         </select></div><div class="form-group"><input type="text"  class="form-control" name="cost" id="cost" placeholder="Cost">    </div> <div class="clear"></div>';
+    objTo.appendChild(divtest)
+  }
+
+  let extra_service_count = 1;
+  function extra_service() {
+
+    extra_service_count++;
+    var objTo = document.getElementById('extra-services')
+    var divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group remove-service-class" + extra_service_count);
+
+    divtest.innerHTML = '<div class="item_service_row"><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control service_name" name="service_name[]" value="" placeholder="Item name"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="number" class="form-control service_price"  name="service_price[]" value="" placeholder="Price" onkeyup="calculateService()"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="number" class="form-control service_quantity"  name="service_quantity[]" value="" placeholder="Quantity" onkeyup="calculateService()"></div></div><div class="col-sm-3 nopadding"><div class="form-group">  </div></div><div class="input-group-btn"> <button class="btn btn-danger" type="button" onclick="removeExtraService(' + extra_service_count + ');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div></div>';
+
+    objTo.appendChild(divtest)
+  }
+
+
+  function remove_education_fields(rid) {
+    $('.removeclass' + rid).remove();
+    calculate();
+  }
+  function removeExtraService(rid) {
+    $('.remove-service-class' + rid).remove();
+    calculateService();
+  }
+
+
+
+
+</script>
